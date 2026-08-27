@@ -2,6 +2,8 @@
 
 embraceyouting 的个人主页与作品集，部署在 GitHub Pages。
 
+在线访问：https://embraceyouting.github.io/
+
 ## 本地预览
 
 这是一个不依赖构建工具的静态站点。直接用浏览器打开 `index.html`，或在当前目录运行任意静态文件服务器即可。
