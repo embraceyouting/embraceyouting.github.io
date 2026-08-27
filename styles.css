@@ -36,11 +36,8 @@ html[data-theme="light"] {
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg); }
-html::-webkit-scrollbar { width: 10px; }
-html::-webkit-scrollbar-track { background: var(--bg); }
-html::-webkit-scrollbar-thumb { border: 3px solid var(--bg); border-radius: 10px; background: var(--accent); }
-html::-webkit-scrollbar-thumb:hover { background: #d0ff91; }
+html { scroll-behavior: smooth; scrollbar-width: none; }
+html::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
 body {
   margin: 0;
