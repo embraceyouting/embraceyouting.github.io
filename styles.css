@@ -105,7 +105,10 @@ html[data-theme="light"] .icon-sun { display: none; }
 html[data-theme="light"] .icon-moon { display: block; }
 .nav-contact { padding: 10px 15px; border: 1px solid var(--line); color: var(--text); font-size: 12px; }
 .nav-contact:hover { border-color: var(--accent); color: var(--accent); }
-.nav-contact > span:last-child, .button > span:last-child, .text-link > span:last-child, .contact-email > span { margin-left: 8px; color: var(--accent); }
+.nav-contact > span:last-child, .text-link > span:last-child, .contact-email > span { margin-left: 8px; color: var(--accent); }
+.button > span:last-child { margin-left: 8px; color: currentColor; transition: transform .25s ease; }
+.button-ghost > span:last-child { color: var(--accent); }
+.button:hover > span:last-child { transform: translateX(3px); }
 .menu-toggle, .mobile-menu { display: none; }
 
 .hero { min-height: min(820px, 100vh); padding-top: 184px; padding-bottom: 54px; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
