@@ -36,7 +36,11 @@ html[data-theme="light"] {
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: var(--accent) var(--bg); }
+html::-webkit-scrollbar { width: 10px; }
+html::-webkit-scrollbar-track { background: var(--bg); }
+html::-webkit-scrollbar-thumb { border: 3px solid var(--bg); border-radius: 10px; background: var(--accent); }
+html::-webkit-scrollbar-thumb:hover { background: #d0ff91; }
 
 body {
   margin: 0;
@@ -232,6 +236,7 @@ h1 span, h2 em { color: var(--accent); font-family: var(--serif); font-weight: 4
 .focus-list { display: flex; flex-wrap: wrap; gap: 9px; }
 .focus-list span { padding: 9px 12px; border: 1px solid color-mix(in srgb, var(--accent) 43%, transparent); color: var(--accent); font: 12px var(--mono); }
 .education-row { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+.education-row + p + .education-row { margin-top: 21px; padding-top: 21px; border-top: 1px solid var(--line); }
 .education-row strong { font-size: 19px; letter-spacing: -.04em; }
 .education-row span { color: var(--muted-light); font: 10px var(--mono); }
 .detail-education p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
