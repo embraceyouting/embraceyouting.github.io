@@ -18,6 +18,7 @@
       documentTitle: "embraceyouting · Frontend / AI Applications",
       documentDescription: "embraceyouting 的个人主页：软件工程、前端开发、数据可视化与 AI 应用实践。",
       brandHome: "返回首页",
+      brandAvatarAlt: "embraceyouting 的头像",
       navLabel: "主导航",
       navHome: "首页",
       navExperience: "经历",
@@ -30,7 +31,7 @@
       accessibilitySkip: "跳到主要内容",
       themeLight: "切换为浅色主题",
       themeDark: "切换为深色主题",
-      langToEnglish: "切换到英文",
+      langToEnglish: "Switch to English",
       langToChinese: "切换到中文",
       heroEyebrow: "软件工程 · 前端 / AI",
       heroTitle: "把复杂的系统，<br /><span>做成清晰的体验。</span>",
@@ -41,6 +42,7 @@
       heroFocusLabel: "关注方向",
       heroFocusValue: "前端工程 · 数据可视化 · RAG / LLM",
       heroArtLabel: "个人技术方向可视化",
+      heroBuildingInPublic: "/ building in public",
       heroCardFocus: "Frontend · Data · AI",
       heroScrollExplore: "滚动探索 <span>↘</span>",
       heroAvailable: "欢迎交流好想法",
@@ -48,6 +50,7 @@
       statsGpa: "本科 GPA",
       statsProjects: "核心项目",
       statsAwardsLabel: "奖项",
+      statsOverviewLabel: "个人概览",
       statsAwards: "蓝桥杯国家二等奖 · 服创国家三等奖（第十五届、第十六届） · 四川省计算机设计大赛一等奖",
       experienceKicker: "经历",
       experienceTitle: "在真实项目里，<br /><em>让想法开始工作。</em>",
@@ -66,6 +69,12 @@
       projectsNote: "两个项目，两个方向：<br />理解用户，也理解系统。",
       behaviorScore: "用户行为评分",
       uxReport: "+ 用户体验分析报告",
+      webApplication: "网页应用",
+      aiApplication: "AI 应用",
+      knowledgeNode: "文",
+      answerNode: "答",
+      knowledgeAnswer: "知识 → 答案",
+      chartLabel: "用户行为趋势示意图",
       feiyueTitle: "《飞阅》用户体验<br />评分算法网站",
       feiyueDescription: "以用户行为数据为基础，结合算法模型，为网站提供全面、准确的用户体验分析报告。",
       viewProject: "了解这个项目",
@@ -81,6 +90,8 @@
       aboutFocusFrontend: "前端系统",
       aboutFocusData: "数据可视化",
       aboutEducationLabel: "教育经历",
+      aboutUstcName: "中国科学技术大学 · USTC",
+      aboutUestcName: "电子科技大学",
       aboutUstcSchool: "计算机学院",
       aboutUndergraduate: "软件工程 · 本科 · 专业排名 31/155 · 均分 90.1",
       aboutRecognitionLabel: "奖项与荣誉",
@@ -98,11 +109,16 @@
       contactLocation: "成都 · 中国",
       contactAvailability: "欢迎交流好想法",
       footerBackTop: "回到顶部 ↑",
+      footerBuild: "DESIGNED & BUILT WITH CURIOSITY",
+      mailFeiyueSubject: "关于《飞阅》用户体验评分算法网站",
+      mailJishuSubject: "关于《极数》数学问答平台",
+      mailHelloSubject: "你好，embraceyouting",
     },
     en: {
       documentTitle: "embraceyouting · Frontend / AI Applications",
       documentDescription: "embraceyouting's personal site: software engineering, frontend development, data visualization, and AI applications.",
       brandHome: "Back to home",
+      brandAvatarAlt: "embraceyouting's avatar",
       navLabel: "Primary navigation",
       navHome: "Home",
       navExperience: "Experience",
@@ -115,7 +131,7 @@
       accessibilitySkip: "Skip to main content",
       themeLight: "Switch to light theme",
       themeDark: "Switch to dark theme",
-      langToEnglish: "切换到英文",
+      langToEnglish: "Switch to English",
       langToChinese: "Switch to Chinese",
       heroEyebrow: "Software Engineering · Frontend / AI",
       heroTitle: "Make complex systems,<br /><span>feel clear.</span>",
@@ -126,6 +142,7 @@
       heroFocusLabel: "FOCUS",
       heroFocusValue: "Frontend Engineering · Data Viz · RAG / LLM",
       heroArtLabel: "A visualization of my technical focus",
+      heroBuildingInPublic: "/ building in public",
       heroCardFocus: "Frontend · Data · AI",
       heroScrollExplore: "SCROLL TO EXPLORE <span>↘</span>",
       heroAvailable: "OPEN TO GOOD IDEAS",
@@ -133,6 +150,7 @@
       statsGpa: "Undergrad GPA",
       statsProjects: "Core projects",
       statsAwardsLabel: "AWARDS",
+      statsOverviewLabel: "Profile overview",
       statsAwards: "Lanqiao Cup · National Second Prize · Service Outsourcing Innovation & Entrepreneurship Competition · National Third Prize (15th & 16th) · Sichuan Computer Design Contest · First Prize",
       experienceKicker: "Experience",
       experienceTitle: "Make ideas work<br /><em>in real products.</em>",
@@ -151,6 +169,12 @@
       projectsNote: "Two projects, two directions:<br />understand the user, understand the system.",
       behaviorScore: "USER BEHAVIOR SCORE",
       uxReport: "+ UX analysis report",
+      webApplication: "WEB APPLICATION",
+      aiApplication: "AI APPLICATION",
+      knowledgeNode: "K",
+      answerNode: "A",
+      knowledgeAnswer: "KNOWLEDGE → ANSWER",
+      chartLabel: "User behavior trend illustration",
       feiyueTitle: "Feiyue · User Experience<br />Scoring Algorithm Website",
       feiyueDescription: "A user-experience scoring website that combines behavior data and algorithmic models to produce clear, actionable reports.",
       viewProject: "See the project",
@@ -166,6 +190,8 @@
       aboutFocusFrontend: "Frontend systems",
       aboutFocusData: "Data visualization",
       aboutEducationLabel: "Education",
+      aboutUstcName: "University of Science and Technology of China · USTC",
+      aboutUestcName: "University of Electronic Science and Technology of China",
       aboutUstcSchool: "School of Computer Science",
       aboutUndergraduate: "Software Engineering · Undergraduate · Major rank 31/155 · Average 90.1",
       aboutRecognitionLabel: "Recognition",
@@ -183,6 +209,10 @@
       contactLocation: "Chengdu · China",
       contactAvailability: "OPEN TO GOOD IDEAS",
       footerBackTop: "Back to top ↑",
+      footerBuild: "DESIGNED & BUILT WITH CURIOSITY",
+      mailFeiyueSubject: "About the Feiyue user experience scoring website",
+      mailJishuSubject: "About the Jishu math QA platform",
+      mailHelloSubject: "Hello, embraceyouting",
     },
   };
 
@@ -200,7 +230,7 @@
     const parts = key.split(".");
     const compact = parts.map((part, index) => index === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)).join("");
     const withoutSection = parts.slice(1).map((part, index) => index === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)).join("");
-    return [...new Set([compact, withoutSection, parts.at(-1)])];
+    return [...new Set([compact, withoutSection, parts[parts.length - 1]])];
   };
   const translate = (dict, key) => dictionaryKeys(key).map((candidate) => dict[candidate]).find((value) => value != null);
 
@@ -229,12 +259,22 @@
       const value = translate(dict, element.dataset.i18nAria);
       if (value != null) element.setAttribute("aria-label", value);
     });
+    document.querySelectorAll("[data-i18n-alt]").forEach((element) => {
+      const value = translate(dict, element.dataset.i18nAlt);
+      if (value != null) element.setAttribute("alt", value);
+    });
 
     const currentLanguage = document.querySelector("[data-lang-current]");
     const otherLanguage = document.querySelector("[data-lang-other]");
     if (currentLanguage) currentLanguage.textContent = language === "en" ? "EN" : "中";
-    if (otherLanguage) otherLanguage.textContent = language === "en" ? "中" : "EN";
+    if (otherLanguage) otherLanguage.textContent = language === "en" ? "ZH" : "EN";
     langToggle?.setAttribute("aria-label", language === "en" ? dict.langToChinese : dict.langToEnglish);
+    document.querySelectorAll("[data-i18n-subject]").forEach((element) => {
+      const value = translate(dict, element.dataset.i18nSubject);
+      if (value == null) return;
+      const address = element.getAttribute("href")?.split("?")[0];
+      if (address) element.setAttribute("href", `${address}?subject=${encodeURIComponent(value)}`);
+    });
     setThemeLabel();
     storage.set("lr-language", language);
   };
@@ -385,8 +425,15 @@
       const bounds = hero.getBoundingClientRect();
       pointer.x = event.clientX - bounds.left;
       pointer.y = event.clientY - bounds.top;
+      hero.style.setProperty("--hero-pointer-x", `${pointer.x}px`);
+      hero.style.setProperty("--hero-pointer-y", `${pointer.y}px`);
+      hero.classList.add("is-pointer-active");
     });
-    hero.addEventListener("pointerleave", () => { pointer.x = -1000; pointer.y = -1000; });
+    hero.addEventListener("pointerleave", () => {
+      pointer.x = -1000;
+      pointer.y = -1000;
+      hero.classList.remove("is-pointer-active");
+    });
     window.requestAnimationFrame(drawParticles);
   }
 
@@ -419,11 +466,19 @@
     document.querySelectorAll("[data-tilt]").forEach((element) => {
       element.addEventListener("pointermove", (event) => {
         const bounds = element.getBoundingClientRect();
-        const rotateX = ((event.clientY - bounds.top) / bounds.height - 0.5) * -4;
-        const rotateY = ((event.clientX - bounds.left) / bounds.width - 0.5) * 5;
+        const pointerX = (event.clientX - bounds.left) / bounds.width;
+        const pointerY = (event.clientY - bounds.top) / bounds.height;
+        const rotateX = (pointerY - 0.5) * -4;
+        const rotateY = (pointerX - 0.5) * 5;
         element.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        element.style.setProperty("--pointer-x", `${pointerX * 100}%`);
+        element.style.setProperty("--pointer-y", `${pointerY * 100}%`);
       });
-      element.addEventListener("pointerleave", () => { element.style.transform = ""; });
+      element.addEventListener("pointerleave", () => {
+        element.style.transform = "";
+        element.style.removeProperty("--pointer-x");
+        element.style.removeProperty("--pointer-y");
+      });
     });
 
     document.querySelectorAll("[data-magnetic]").forEach((element) => {
@@ -431,9 +486,13 @@
         const bounds = element.getBoundingClientRect();
         const x = (event.clientX - (bounds.left + bounds.width / 2)) * 0.16;
         const y = (event.clientY - (bounds.top + bounds.height / 2)) * 0.16;
-        element.style.transform = `translate(${x}px, ${y}px)`;
+        element.style.setProperty("--magnetic-x", `${x}px`);
+        element.style.setProperty("--magnetic-y", `${y}px`);
       });
-      element.addEventListener("pointerleave", () => { element.style.transform = ""; });
+      element.addEventListener("pointerleave", () => {
+        element.style.removeProperty("--magnetic-x");
+        element.style.removeProperty("--magnetic-y");
+      });
     });
   }
 })();
