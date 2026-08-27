@@ -1,6 +1,6 @@
 # embraceyouting.github.io
 
-冷瑞的个人主页与作品集，部署在 GitHub Pages。
+embraceyouting 的个人主页与作品集，部署在 GitHub Pages。
 
 ## 本地预览
 
