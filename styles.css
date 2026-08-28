@@ -325,7 +325,7 @@ h1 span, h2 em { color: var(--accent); font-family: var(--serif); font-weight: 4
 @media (max-width: 900px) {
   .container { width: min(100% - 48px, 680px); }
   .desktop-nav, .nav-contact { display: none; }
-  .menu-toggle { display: flex; flex-direction: column; gap: 5px; width: 30px; height: 30px; padding: 5px;justify-content: center; }
+  .menu-toggle { display: flex; flex-direction: column; gap: 5px; width: 30px; height: 30px; padding: 5px;}
   .menu-toggle span { display: block; width: 20px; height: 1px; background: var(--text); transition: transform .25s ease; }
   .site-header.menu-open .menu-toggle span:first-child { transform: translateY(3px) rotate(45deg); }
   .site-header.menu-open .menu-toggle span:last-child { transform: translateY(-3px) rotate(-45deg); }
