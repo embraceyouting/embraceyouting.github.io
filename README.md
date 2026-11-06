@@ -1,6 +1,6 @@
 # embraceyouting.github.io
 
-embraceyouting 的个人主页与作品集。GitHub Pages 是主站，Sites 用于独立托管镜像。
+whisper 的个人主页与作品集。GitHub Pages 是主站，Sites 用于独立托管镜像。
 
 在线访问：https://embraceyouting.github.io/
 
