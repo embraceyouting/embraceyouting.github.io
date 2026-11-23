@@ -1,4 +1,5 @@
 import { createGestureControls } from './gestures.mjs';
+import { clearSavedPhotos, readSavedPhotos, savePhoto } from './photo-store.mjs';
 
 const samples = ['ky1.jpg', 'ky2.jpg', 'ky3.jpg'];
 const photoLimit = 60;
@@ -12,6 +13,7 @@ const modeButtons = [...byId('modes').querySelectorAll('button')];
 const photoList = byId('photo-list');
 const photoCount = byId('photo-count');
 const photoStatus = byId('photo-status');
+const clearButton = byId('clear-photos');
 const dialog = byId('photo-dialog');
 const dialogImage = byId('dialog-image');
 const fileButton = byId('file-button');
@@ -24,7 +26,12 @@ let scene;
 let sceneReady = false;
 let mode = 'TREE';
 let focusedPhoto = null;
-let importing = false;
+let editingPhotos = false;
+
+function setAlbumBusy(value) {
+    editingPhotos = value;
+    fileButton.disabled = folderButton.disabled = clearButton.disabled = value;
+}
 
 function updateControls() {
     for (const button of modeButtons) {
@@ -113,15 +120,40 @@ async function loadImage(src) {
     return image;
 }
 
-const initialPhotos = Promise.allSettled(samples.map(file => loadImage('./images/' + file))).then(results => {
+async function restoreSavedPhotos() {
+    let records;
+    try {
+        records = await readSavedPhotos();
+    } catch {
+        if (!editingPhotos) photoStatus.textContent = '浏览器存储暂不可用，导入的照片可能无法保留。';
+        return;
+    }
+
+    clearButton.hidden = records.length === 0;
+    let unreadable = 0;
+    for (const record of records) {
+        let src;
+        try {
+            src = URL.createObjectURL(record.blob);
+            addPhoto(src, record.name, await loadImage(src));
+        } catch {
+            if (src) URL.revokeObjectURL(src);
+            unreadable++;
+        }
+    }
+    if (unreadable && !editingPhotos) photoStatus.textContent = `${unreadable} 张已保存的照片无法读取。`;
+}
+
+const initialPhotos = Promise.allSettled(samples.map(file => loadImage('./images/' + file))).then(async results => {
     results.forEach((result, index) => {
         if (result.status === 'fulfilled') {
             addPhoto('./images/' + samples[index], `示例照片 ${index + 1}`, result.value);
         }
     });
+    await restoreSavedPhotos();
 });
 
-async function loadLocalPhoto(file) {
+async function prepareLocalPhoto(file) {
     const original = URL.createObjectURL(file);
     let image;
     try {
@@ -139,7 +171,7 @@ async function loadLocalPhoto(file) {
     const format = file.type === 'image/jpeg' ? 'image/jpeg' : 'image/webp';
     const blob = await new Promise(resolve => canvas.toBlob(resolve, format, 0.86));
     if (!blob) throw new Error('Unable to prepare photo');
-    addPhoto(URL.createObjectURL(blob), file.name, canvas);
+    return { canvas, blob };
 }
 
 async function importPhotos(event) {
@@ -147,17 +179,17 @@ async function importPhotos(event) {
         file.type.startsWith('image/') || /\.(avif|bmp|gif|heic|heif|jpe?g|png|svg|webp)$/i.test(file.name),
     );
     event.target.value = '';
-    if (importing) return;
+    if (editingPhotos) return;
     if (!files.length) {
         photoStatus.textContent = '所选内容中没有可导入的图片。';
         return;
     }
 
-    importing = true;
-    fileButton.disabled = folderButton.disabled = true;
+    setAlbumBusy(true);
     photoStatus.textContent = '正在导入照片…';
     await initialPhotos;
     let added = 0;
+    let saved = 0;
     let failed = 0;
     let skipped = 0;
     for (const file of files) {
@@ -166,7 +198,22 @@ async function importPhotos(event) {
             break;
         }
         try {
-            await loadLocalPhoto(file);
+            const { canvas, blob } = await prepareLocalPhoto(file);
+            let stored;
+            try {
+                stored = await savePhoto({ name: file.name, blob }, photoLimit - samples.length);
+            } catch {
+                stored = undefined;
+            }
+            if (stored === false) {
+                skipped = files.length - added - failed;
+                break;
+            }
+            if (stored) {
+                saved++;
+                clearButton.hidden = false;
+            }
+            addPhoto(URL.createObjectURL(blob), file.name, canvas);
             added++;
         } catch {
             failed++;
@@ -174,13 +221,27 @@ async function importPhotos(event) {
     }
 
     photoStatus.textContent = [
-        added && `已添加 ${added} 张`,
+        saved && `已保存 ${saved} 张`,
+        added > saved && `${added - saved} 张未能保存，刷新后会消失`,
         failed && `${failed} 张无法读取`,
         skipped && `已达 ${photoLimit} 张上限，跳过 ${skipped} 张`,
     ].filter(Boolean).join(' · ');
-    importing = false;
-    fileButton.disabled = folderButton.disabled = false;
+    setAlbumBusy(false);
 }
+
+clearButton.addEventListener('click', async () => {
+    if (editingPhotos || !window.confirm('清空此浏览器保存的导入照片？')) return;
+
+    setAlbumBusy(true);
+    await initialPhotos;
+    try {
+        await clearSavedPhotos();
+        window.location.reload();
+    } catch {
+        photoStatus.textContent = '清空失败，请稍后重试。';
+        setAlbumBusy(false);
+    }
+});
 
 fileButton.addEventListener('click', () => fileInput.click());
 folderButton.addEventListener('click', () => folderInput.click());

@@ -40,7 +40,10 @@
         <noscript><p class="scene-status">请启用 JavaScript 以使用互动圣诞相册。</p></noscript>
 
         <section class="album" aria-labelledby="album-title">
-            <h2 id="album-title">照片 <span id="photo-count"></span></h2>
+            <div class="album-heading">
+                <h2 id="album-title">照片 <span id="photo-count"></span></h2>
+                <button id="clear-photos" class="control" type="button" hidden>清空导入</button>
+            </div>
             <ul id="photo-list"></ul>
             <p id="photo-status" class="status" role="status"></p>
         </section>

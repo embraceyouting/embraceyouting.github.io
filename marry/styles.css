@@ -113,7 +113,16 @@ button:focus-visible, select:focus-visible {
     background: var(--glass);
 }
 
-.album h2 { margin: 0 0 0.45rem; color: var(--gold); font-size: 0.75rem; font-weight: 600; }
+.album-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    margin-bottom: 0.45rem;
+}
+
+.album h2 { margin: 0; color: var(--gold); font-size: 0.75rem; font-weight: 600; }
+.album-heading .control { min-height: 2rem; padding: 0.3rem 0.55rem; border-color: var(--line); font-size: 0.74rem; }
 #photo-count { margin-left: 0.3rem; color: #e8d7ba; font-weight: 400; }
 #photo-list {
     display: grid;

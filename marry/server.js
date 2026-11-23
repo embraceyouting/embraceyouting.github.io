@@ -11,6 +11,7 @@ const staticFiles = new Map([
     ['/Index.html', ['index.html', 'text/html; charset=utf-8']],
     ['/styles.css', ['styles.css', 'text/css; charset=utf-8']],
     ['/app.mjs', ['app.mjs', 'text/javascript; charset=utf-8']],
+    ['/photo-store.mjs', ['photo-store.mjs', 'text/javascript; charset=utf-8']],
     ['/scene.mjs', ['scene.mjs', 'text/javascript; charset=utf-8']],
     ['/gestures.mjs', ['gestures.mjs', 'text/javascript; charset=utf-8']],
     ...['ky1.jpg', 'ky2.jpg', 'ky3.jpg'].map(name => [
