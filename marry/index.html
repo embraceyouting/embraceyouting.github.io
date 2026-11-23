@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#081524">
+    <meta name="description" content="一棵可以用照片装饰的互动 3D 圣诞树。">
+    <title>Merry Christmas · 圣诞相册</title>
+    <link rel="stylesheet" href="./styles.css">
+    <noscript><style>#scene-status { display: none; }</style></noscript>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <main class="experience">
+        <div id="canvas-container" aria-hidden="true"></div>
+
+        <header class="heading">
+            <h1 lang="en">Merry Christmas</h1>
+            <p>把喜欢的照片挂在圣诞树上</p>
+        </header>
+
+        <aside class="camera-tools" aria-label="手势控制">
+            <button id="camera-toggle" class="control" type="button" aria-pressed="false" disabled>启用手势</button>
+            <div id="camera-panel" class="camera-panel" hidden>
+                <video id="webcam" autoplay playsinline muted aria-label="摄像头预览"></video>
+                <select id="camera-select" class="control" aria-label="选择摄像头" hidden></select>
+                <p>握拳成树 · 张开散开 · 捏合聚焦</p>
+            </div>
+            <p id="camera-status" class="status" role="status"></p>
+        </aside>
+
+        <p class="scene-status" id="scene-status" role="status">正在点亮圣诞树…</p>
+        <noscript><p class="scene-status">请启用 JavaScript 以使用互动圣诞相册。</p></noscript>
+
+        <section class="album" aria-labelledby="album-title">
+            <h2 id="album-title">照片 <span id="photo-count"></span></h2>
+            <ul id="photo-list"></ul>
+            <p id="photo-status" class="status" role="status"></p>
+        </section>
+
+        <div class="dock">
+            <div id="modes" class="control-group modes" role="group" aria-label="场景模式">
+                <button class="control" type="button" data-mode="TREE" aria-pressed="true" disabled>圣诞树</button>
+                <button class="control" type="button" data-mode="SCATTER" aria-pressed="false" disabled>散开</button>
+                <button class="control" type="button" data-mode="FOCUS" aria-pressed="false" disabled>聚焦</button>
+            </div>
+            <div class="control-group imports" role="group" aria-label="添加照片">
+                <button id="file-button" class="control" type="button">添加照片</button>
+                <button id="folder-button" class="control" type="button">选择文件夹</button>
+                <input id="file-input" type="file" accept="image/*" multiple hidden>
+                <input id="folder-input" type="file" webkitdirectory multiple hidden>
+            </div>
+        </div>
+
+        <dialog id="photo-dialog" aria-label="照片预览">
+            <button id="close-photo" class="control" type="button" aria-label="关闭预览" autofocus>关闭</button>
+            <img id="dialog-image" alt="">
+        </dialog>
+    </main>
+    <script type="module" src="./app.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+:root {
+    color-scheme: dark;
+    font-family: system-ui, sans-serif;
+    color: #f8edda;
+    background: #081524;
+    --gold: #f0cf8c;
+    --line: #caa86c50;
+    --glass: #081525e6;
+    --edge: clamp(0.8rem, 3vw, 2.5rem);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body { margin: 0; }
+
+.experience {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: clip;
+    isolation: isolate;
+    background: radial-gradient(ellipse at 50% 52%, #182e3a 0%, #0b1a2b 42%, #050d18 100%);
+}
+
+#canvas-container {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    touch-action: none;
+}
+
+#canvas-container canvas { display: block; width: 100%; height: 100%; }
+
+.heading {
+    position: absolute;
+    top: max(var(--edge), env(safe-area-inset-top));
+    left: 0;
+    width: 100%;
+    padding-inline: var(--edge);
+    text-align: center;
+    pointer-events: none;
+}
+
+.heading h1 {
+    margin: 0;
+    color: #ffe7b0;
+    font: 400 clamp(2.1rem, 6.9vw, 5.6rem)/1 Georgia, 'Times New Roman', serif;
+    letter-spacing: -0.055em;
+    text-shadow: 0 0 2.2rem #e6b45b55;
+}
+
+.heading p {
+    margin: 0.55rem 0 0;
+    color: #ddc9a7;
+    font-size: clamp(0.72rem, 2.5vw, 0.86rem);
+    letter-spacing: 0.14em;
+}
+
+.control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.65rem;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid transparent;
+    border-radius: 2rem;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.83rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.control:not(:disabled):hover,
+.control[aria-pressed="true"] {
+    background: #f0cf8c;
+    color: #152030;
+}
+
+.control:disabled { opacity: 0.55; cursor: default; }
+
+button:focus-visible, select:focus-visible {
+    outline: 2px solid #ffe19e;
+    outline-offset: 3px;
+}
+
+.dock, .camera-tools, .album { position: absolute; }
+
+.dock {
+    bottom: max(var(--edge), env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.3rem;
+    border: 1px solid var(--line);
+    border-radius: 2rem;
+    background: var(--glass);
+}
+
+.control-group { display: flex; align-items: center; gap: 0.12rem; }
+.imports { padding-left: 0.45rem; border-left: 1px solid var(--line); }
+
+.album {
+    bottom: max(var(--edge), env(safe-area-inset-bottom));
+    left: max(var(--edge), env(safe-area-inset-left));
+    width: min(14rem, 24vw);
+    padding: 0.7rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: var(--glass);
+}
+
+.album h2 { margin: 0 0 0.45rem; color: var(--gold); font-size: 0.75rem; font-weight: 600; }
+#photo-count { margin-left: 0.3rem; color: #e8d7ba; font-weight: 400; }
+#photo-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.35rem;
+    max-height: 8.5rem;
+    padding: 0.2rem;
+    margin: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    list-style: none;
+}
+
+.photo {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 0.38rem;
+    background: #142535;
+    cursor: pointer;
+}
+
+.photo:is(:hover, [aria-pressed="true"]) { border-color: var(--gold); }
+.photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.status { margin: 0.45rem 0 0; color: #efd5a5; font-size: 0.74rem; line-height: 1.45; }
+.status:empty { display: none; }
+
+.camera-tools {
+    top: max(var(--edge), env(safe-area-inset-top));
+    right: max(var(--edge), env(safe-area-inset-right));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: min(12rem, 38vw);
+}
+
+.camera-tools > .control, .camera-panel, .camera-tools .status {
+    border: 1px solid var(--line);
+    background: var(--glass);
+}
+
+.camera-tools .status { padding: 0.4rem 0.6rem; border-radius: 0.5rem; }
+
+.camera-panel {
+    width: 100%;
+    margin-top: 0.45rem;
+    padding: 0.45rem;
+    border-radius: 0.7rem;
+}
+
+.camera-panel video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 0.35rem;
+    background: #040a13;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+.camera-panel select { display: block; width: 100%; margin-top: 0.3rem; min-height: 1.8rem; color: var(--gold); }
+.camera-panel p { margin: 0.4rem 0 0; font-size: 0.68rem; line-height: 1.4; color: #e8d7ba; }
+
+.scene-status {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: min(26rem, 82%);
+    transform: translate(-50%, -50%);
+    margin: 0;
+    text-align: center;
+    color: var(--gold);
+    pointer-events: none;
+}
+
+#photo-dialog {
+    max-width: 90vw;
+    max-height: 85vh;
+    padding: 0.75rem;
+    color: inherit;
+    background: #0a1726;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+}
+
+#photo-dialog::backdrop { background: #02070bd9; }
+#close-photo { display: flex; margin: 0 0 0.4rem auto; }
+#dialog-image { display: block; max-width: 100%; max-height: 68vh; object-fit: contain; }
+.presentation .dock, .presentation .album,
+.presentation .camera-tools:not(:has([aria-pressed="true"])) { visibility: hidden; }
+
+@media (max-width: 800px) {
+    .camera-tools { top: max(5.8rem, calc(env(safe-area-inset-top) + 5rem)); }
+    .album {
+        bottom: calc(max(var(--edge), env(safe-area-inset-bottom)) + 3.8rem);
+        width: min(21rem, calc(100% - 2 * var(--edge)));
+    }
+    #photo-list { display: flex; max-height: none; }
+    #photo-list li { flex: 0 0 2.8rem; }
+}
+
+@media (max-width: 440px) {
+    .dock { gap: 0.15rem; padding: 0.22rem; }
+    .dock .control { padding-inline: 0.45rem; font-size: 0.74rem; }
+    .imports { padding-left: 0.18rem; }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+    .heading h1 { font-size: 2.2rem; }
+    .heading p { display: none; }
+    .camera-tools { top: var(--edge); }
+    #photo-list { max-height: 3.5rem; }
+}
